@@ -196,7 +196,7 @@ namespace HTTP_Request_GetHowKteam
         /// 
         /// 
         /// </summary>
-        private string capchaKey = "*************************";
+        private string capchaKey = "138eb6618863fbd025416e85dc7a59a7";
         private string urlRequestVtcCapchaImg = "https://vtcgame.vn//CaptchaImage.ashx?ss=0.014018362059772027&w=60&h=40";
         private string urlRequestTopupByCard = "https://vtcgame.vn/Vcoin/TopupByCard";
         private string urlVtcCoint = "https://vtcgame.vn/nap-vcoin/qua-the-cao.html";
@@ -248,10 +248,59 @@ namespace HTTP_Request_GetHowKteam
             }
             return cap;
         }
-
+        /// <summary>
+        /// 
+        /// Recaptcha
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private string ggKeyThayTrucTuyen = "6Lf57BcUAAAAABST6IWjYd97ghC3v2kKsCfPNrdg";
+        private string urlThayTrucTuyenLogin = "http://thaytructuyen.com/Account/Login";
+        private string urlRecapChaSource = "http://thaytructuyen.com/Account/Login";
         private void btnRecaptcha_Click(object sender, EventArgs e)
         {
+            HttpRequest http = new HttpRequest();
+            http.Cookies = new CookieDictionary();
+            string userArgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
 
+            var html = getData(urlThayTrucTuyenLogin, http, userArgent);
+
+            string token = GetThayTrucTuyenToken(html);
+
+            string userName = "rongk9";
+            string passWord = "hahahaha";
+            
+            string capcha = Reslove2ReCapcha(capchaKey,ggKeyThayTrucTuyen, urlRecapChaSource);
+
+            string data = "__RequestVerificationToken=" + token + "&UserName=" + userName + "&Password=" + passWord + "&g-recaptcha-response=" + capcha + "&RememberMe=false";
+            html = PostData(http, "http://thaytructuyen.com/Account/Login", data, "application/x-www-form-urlencoded; charset=UTF-8").ToString();
+            testData(html);
+            string x = "s";
+           
+        }
+        string Reslove2ReCapcha(string capChaKey, string ggKey,string url)
+        {
+            string cap = "";
+
+            Recaptcha_2Captcha reCap = new Recaptcha_2Captcha(capchaKey);
+            bool isSuccess = reCap.SolveRecaptchaV2(ggKey,url, out cap);
+            while (!isSuccess)
+            {
+                isSuccess = reCap.SolveRecaptchaV2(ggKey, url, out cap);
+                Thread.Sleep(TimeSpan.FromSeconds(2));
+            }
+            return cap;
+        }
+        string GetThayTrucTuyenToken(string html)
+        {
+            string token = "";
+            var res = Regex.Matches(html, @"(?<=__RequestVerificationToken"" type=""hidden"" value="").*?(?="")", RegexOptions.Singleline);
+            if (res != null && res.Count > 0)
+            {
+                token = res[0].ToString();
+            }
+            return token;
         }
     }
 
