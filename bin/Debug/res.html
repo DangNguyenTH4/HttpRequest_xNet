@@ -184,22 +184,89 @@
 
     
 <ul class="leftmenu">
+
+
+<li>
+    <span>
+        <label class="badge badge-reppoint"><i class="fa fa-star" aria-hidden="true"></i> <span class="reppointcommon"></span></label>
+    </span>
+</li>
+<li>
+    <span>
+        <img class="avatar-circle avatarcommon" src="/Content/image/avatar/avatar.png" title="Kteam - Howkteam Free Education" alt="Kteam - Howkteam Free Education" />
+    </span>
+    <ul class="logoutuser">
         <li>
-            <span><i class="glyphicon glyphicon-user"></i></span>
-            <ul class="subuser">
-                <li>
-                    <h3>Tài khoản</h3>
-                </li>
-                <li>
-                    <p>Đăng ký thành viên và Đăng nhập để có thể dễ dàng trao đổi, giao lưu và chia sẻ kiến thức hơn.</p>
-                </li>
-                <li>
-                    <input type="button" id="targetlogin" class="btn btn-primary" value="Đăng nhập" />
-                    &nbsp;&nbsp; &nbsp;
-                    <input type="button" data-toggle="modal" data-target="#RegisterPopupPartial" class="btn btn-success" value="Đăng ký" />
-                </li>
-            </ul>
+            <h3>Tài khoản</h3>
         </li>
+
+        <li>
+            <a class="btn btn-primary" href="/manage">Hồ sơ của tôi</a>
+
+            &nbsp;&nbsp; &nbsp;
+<form action="/account/logoff" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="uUz-2JVAMFwkFrx4PMA6zf2iJKxYz_zDj1IXhEEtCc8pG4s79CLigfoIb6rTIeAT3dAVqxCQFxZlUV1IKvnLyoIL1edraNMtR7HHSp_Qf-2sm-WmtPqwUjF2L8IDypMX166FJhjfDib-nDflguE4eA2" />                <a class="btn btn-success" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+</form>
+        </li>
+    </ul>
+</li>
+<li>
+    <span>
+        <i class="fa fa-globe" aria-hidden="true"></i>
+    </span>
+    <div id="templatenotify" style="display:none">
+        <div class="contentnotify">
+            <div class="contentsubnotify">
+                <img class="imagenotify" src="" width="45" height="45" title="Kteam - Howkteam Free Education" alt="Kteam - Howkteam Free Education">
+                <a href="#" class="linknotify">
+                    <span class="contentnotify">
+                        <span>t</span>
+                    </span>
+
+                    <span class="timenotify">.</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="tab-menu">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#notifyQAndA" id="TagetnotifyQAndA" class="Notify_IsView" data-urlIsView="/questions/updatenotifyisview" data-totalIsView="0" data-disable="0" aria-controls="profile" role="tab" data-toggle="tab">
+                    Hỏi đáp
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#notifyLearn" class="Notify_IsView" data-urlIsView="/learn/notifylectureisview" data-totalIsView="0" data-disable="0" aria-controls="home" role="tab" data-toggle="tab">
+                    Bài học
+                </a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in tab-notify active" id="notifyQAndA">
+                <div class="notify-QAndA notify-scroll" data-pageNum="1" data-pageSize="10" data-disable="0" data-url="/questions/notify" data-idshow=".notify-QAndA">
+
+
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade tab-notify" id="notifyLearn">
+                <div class="listnotifyuser hidenotify notify-scroll" id="lsnotifyuser" data-pageNum="1" data-pageSize="10" data-disable="0" data-url="/learn/notifylecture" data-idshow="#lsnotifyuser">
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</li>
+
+
 
     <li>
         <span><i id="tagssearch" class="fa fa-search" aria-hidden="true"></i></span>
@@ -287,7 +354,7 @@
                     <div>
                             <span><img class="avatar-circle" src="https://res.cloudinary.com/howkteam/image/upload/c_fill,g_face,h_40,w_40/v1493074423/avatar_user/snatdl5kbmdmlwh05gf8.jpg" title="5.1 Ph&#226;n t&#237;ch lỗ hổng bảo mật (Vulnerability Analysis)" alt="5.1 Ph&#226;n t&#237;ch lỗ hổng bảo mật (Vulnerability Analysis)"/></span>
                         <p>Kteam</p>
-                        <p><b>52</b> Lượt xem</p>
+                        <p><b>60</b> Lượt xem</p>
                     </div>
                 </div>
             </div>
@@ -304,7 +371,7 @@
                     <div>
                             <span><img class="avatar-circle" src="https://res.cloudinary.com/howkteam/image/upload/c_fill,g_face,h_40,w_40/v1493074423/avatar_user/snatdl5kbmdmlwh05gf8.jpg" title="ID, class trong HTML v&#224; thuộc t&#237;nh float trong CSS" alt="ID, class trong HTML v&#224; thuộc t&#237;nh float trong CSS"/></span>
                         <p>Kteam</p>
-                        <p><b>96</b> Lượt xem</p>
+                        <p><b>97</b> Lượt xem</p>
                     </div>
                 </div>
             </div>
@@ -338,7 +405,7 @@
                     <div>
                             <span><img class="avatar-circle" src="https://res.cloudinary.com/howkteam/image/upload/c_fill,g_face,h_40,w_40/v1493074423/avatar_user/snatdl5kbmdmlwh05gf8.jpg" title="C&#225;ch sử dụng m&#224;u trong CSS" alt="C&#225;ch sử dụng m&#224;u trong CSS"/></span>
                         <p>Kteam</p>
-                        <p><b>155</b> Lượt xem</p>
+                        <p><b>156</b> Lượt xem</p>
                     </div>
                 </div>
             </div>
@@ -389,7 +456,7 @@
                     <div>
                             <span><img class="avatar-circle" src="https://res.cloudinary.com/howkteam/image/upload/c_fill,g_face,h_40,w_40/v1493074423/avatar_user/snatdl5kbmdmlwh05gf8.jpg" title="Multi threading với C# d&#249;ng Http Request" alt="Multi threading với C# d&#249;ng Http Request"/></span>
                         <p>Kteam</p>
-                        <p><b>339</b> Lượt xem</p>
+                        <p><b>341</b> Lượt xem</p>
                     </div>
                 </div>
             </div>
@@ -941,7 +1008,7 @@
 
 
         <form id="__AjaxAntiForgeryForm" action="#" method="post">
-            <input name="__RequestVerificationToken" type="hidden" value="cWTpV4f0wM24kqRaCcwpPImwPRL0U9qOFP4UTyTxBYIxKI87tWw4mzYfq10rxG0ptaXjUkT-5GhN_dGsE1Ixgx-Bxa9AGuMOdPXKn4mM9Ow1" />
+            <input name="__RequestVerificationToken" type="hidden" value="i4MxoHabk8QcWPhY-npDffde6tlQ5vQo13uN6MFUUBcWqmE1rosG09M8nAqaQl7AnhU3-ji7wKAUHOLhxU0-abCx5t_6hn4KWOWZi-RP5EtCHXqI4soNh3LBl8_yGDuEhsgcZenw3VBiyc2uJT4csA2" />
         </form>
         
 
@@ -1091,6 +1158,16 @@
     <textarea id="copycodehidden" class="hiddencopycode"></textarea>
 
 
+            <input type="text" name="checkauthen" value="" data-value="True" id="checkauthenti" hidden />
+            <script>
+                var userId = 'd7dc0b3f-4a6a-4f7a-9dde-ef62dd69da23';
+            </script>
+                <div id="inforuser" style="display:none">
+                    <input type="text" name="realname" id="realname" value="nguyen.dang.tlu" data-iduser="d7dc0b3f-4a6a-4f7a-9dde-ef62dd69da23" hidden />
+                    <input type="text" name="reppoint" id="reppoint" value="0" data-iduser="d7dc0b3f-4a6a-4f7a-9dde-ef62dd69da23" hidden />
+                        <img id="avatar" width="10" height="10" src="/Content/image/avatar/avatar.png" title="Kteam - Howkteam Free Education" alt="Kteam - Howkteam Free Education"/>
+
+                </div>
 
 </footer>
 <div>
@@ -1114,7 +1191,7 @@
             <div class="modal-body modal-body-login">
                 <div class="body-login">
                     
-<form action="/account/externallogin?ReturnUrl=https%3A%2F%2Fwww.howkteam.vn%2F" method="post"><input name="__RequestVerificationToken" type="hidden" value="IcU8WP90MBnqDxd5pza8211Vo2u9ori04gvcvAhUc9XBvJO0lLKBY3C-mQOAG06kQstFYCFXtWFIn9yVrjum7iB5PFtSw585IPzP-KUcJYY1" />            <div class="row">
+<form action="/account/externallogin?ReturnUrl=https%3A%2F%2Fwww.howkteam.vn%2F" method="post"><input name="__RequestVerificationToken" type="hidden" value="on5ClKIUu_yQ2NZdnuA1ZC7-j6lbZ6FWGtLZaxUHnuK1B8eyYRBzRgkLcMYBLEC3_de-C6al_Tva8SmrsN6kfP7mjCdOYmj-kTXoiuJpELNYPRdLgetSo2YNxhGhqeD047QSLAMb64ksaMNsbcKXTA2" />            <div class="row">
                         <div class="col-sm-6 mb-10">
                             <button type="submit" class="btn btn-danger btn-block" id="Google" name="provider" value="Google" title="Log in using your Google account"><span class="fa fa-google-plus" aria-hidden="true"></span>&nbsp;&nbsp; Google+</button>
                         </div>
@@ -1131,7 +1208,7 @@
                         <div class="or">hoặc</div>
                     </div>
 <form action="/account/login?returnUrl=https%3A%2F%2Fwww.howkteam.vn%2F" class="form-horizontal" id="formloginsub" method="post" role="form">                        <div class="loginlocal" id="loginlocalajax">
-                            <input name="__RequestVerificationToken" type="hidden" value="TyxD5O_N-ajRxVODu4xJddkZaXMbDAPCIOAFNwuOuUtPlyU0RfmpDL650d1kAM_Co2p8OfP6EAaWJnO6TC5QpJTZ6YTbRrmS4VSDGYY3te41" />
+                            <input name="__RequestVerificationToken" type="hidden" value="S4Hod-cBboM5nW96H5CdnRS7iAzJD58rurqbJnPtLgngii5A45op4lQzol-YFM_4J-1JEwbJJ9juqsmDggRmPB4Vk5U1SUTCGtc-pg09I3E93tXcHTyEfMbQCDBTJA6TLTErdBOKm7bh1PhaD85zCQ2" />
                                                        
                             
                             <span id="errorreportloginsub" class="text-danger"></span>      
@@ -1196,7 +1273,7 @@
             <div class="modal-body modal-body-login">
                 <div id="errorreportregistersub"></div>
 <form action="/account/register" class="form-horizontal" id="formregistersub" method="post" role="form">                    <div class="registerlocal" id="registerajax">
-                        <input name="__RequestVerificationToken" type="hidden" value="HYnS-VAwO-xAZ0Yl3Ws2_-1YPd1KnUP25dAV-NRJMPEtavVFbCIhfH1vNAegZuCGuugU7eySDMToEd3HCxcs32awCSoC4xvxNnx0Z85DYJ41" />
+                        <input name="__RequestVerificationToken" type="hidden" value="klYGzU-K5aKXs2xjPCP4elksW1PI5Mg2q3I-1PTnEluCUOYrx-tERFh2pVGwvDaoeqgnJJNrQW5yIRo5cV8XVip4IxZGVtVJz7k72TNiEMPQN_rlDmWgy0dU941edJwHBrDZyXmctIiHbKEgyg9Hig2" />
                         
 
                         <span class="text-danger"></span>
