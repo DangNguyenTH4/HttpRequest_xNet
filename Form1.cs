@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xNet;
@@ -40,15 +41,21 @@ namespace HTTP_Request_GetHowKteam
             File.WriteAllText("res.html", html);
             Process.Start("res.html");
         }
-        string getData(string url,string cookie=null)
+        string getData(string url,HttpRequest http =null,string userArgent=null,string cookie=null)
         {
-            HttpRequest http = new HttpRequest();
-            http.Cookies = new CookieDictionary();
+            if (http == null)
+            {
+                http = new HttpRequest();
+                http.Cookies = new CookieDictionary();
+            }
             if (!string.IsNullOrEmpty(cookie))
             {
                 AddCookie(http, cookie);
             }
-            //http.UserAgent = "";
+            if (!string.IsNullOrEmpty(userArgent))
+            {
+                http.UserAgent = userArgent;
+            }
             string html = http.Get(url).ToString();
             return html;
         }
@@ -64,13 +71,59 @@ namespace HTTP_Request_GetHowKteam
                 }
             }
         }
-       
+        string url = "https://www.howkteam.vn/";
+        string urlLogin = "https://www.howkteam.vn/account/login?returnUrl=https%3A%2F%2Fwww.howkteam.vn%2F";
         private void btnGetDataCookie_Click(object sender, EventArgs e)
         {
             string url = "https://www.howkteam.vn/";
             string cookie = "_ga=GA1.2.319522369.1539615594; _gid=GA1.2.1524716106.1542072362; ASP.NET_SessionId=znsibm2tpo0yougmclj1xcij; __RequestVerificationToken=rjZr3zvMR1Ov0lm6mw8SRgvBUDwJjqYguPlkd8IO_LdxVK_4qAPoaAGPEJytXu6WdvB3OzCsrDJhi_pKROgnMQRNgQ2qXQecGi6mhBheBHQ1; _gat=1; .AspNet.ApplicationCookie=kYhU6XznL0KQY9DPNIYNHZtCVUQ-Q-1-xfQQ_1UQ0osDD6UjXZE71axp2EmsqIbjvbz2-oIBhdP7KKxAPm0irCfiXSy9qCXMkHvslxJwthQIJuUAcWbXkBYb9Y3hSm8exyyJLviC0ck23vcsAdlMoYWqLvoSYla2Cw46dCLAwsBbv6JtBk_rCPOebFNYJWs15EQK2pC0WrlSfEwp1cIGTNu-OjyPVBj0QTzxzzCJ0u0y2jJsIEUL0_tqq8UPSEer10bXvViexQ8abwkHekhvf4Wh7KPen4yZjLO5B9JxkDUy_KXuUzeQiMvY_33n1VawsiuIPdtwQ59OFATa9e1ySd8s-bUKceSoAffRi1duPpxYEcLiOKkDm3KKJHBql3tGYpgj2vACyna9rBvgwvYJ30jm_0uJZDQXiEKZS40TK0hC4THjcYs__KQ4xzRK-LKIfzi5zggLh4fn_GVtgYMbuGEcL6ufP5Y10Qw8wWoeIREpMm08fvDIdJQF83dlU_nERY6NjMhTPTBqH-t6F8Ctxw";
-            var html = getData(url,cookie);
+            var html = getData(url);
             testData(html);
+        }
+        //
+        string GetLoginDataToken(string html)
+        {
+            string token = "";
+            var res = Regex.Matches(html, @"(?<=__RequestVerificationToken"" type=""hidden"" value="").*?(?="")",RegexOptions.Singleline);
+            if(res!=null && res.Count > 0)
+            {
+                token = res[0].ToString();
+            }
+            return token;
+        }
+        string PostData(HttpRequest http,string url,string data=null,string contentType=null,string userArgent =null,string cookie = null)
+        {
+            if (http == null)
+            {
+                http = new HttpRequest();
+                http.Cookies = new CookieDictionary();
+            }
+            if (!string.IsNullOrEmpty(cookie))
+            {
+                AddCookie(http, cookie);
+            }
+            if (!string.IsNullOrEmpty(userArgent))
+            {
+                http.UserAgent = userArgent;
+            }
+            string html = http.Post(url, data, contentType).ToString();
+            return html;
+        }
+        private void btnPostLogin_Click(object sender, EventArgs e)
+        {
+            HttpRequest http = new HttpRequest();
+            http.Cookies = new CookieDictionary();
+            string userArgent="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
+
+            var html = getData(url, http, userArgent);
+
+            string token = GetLoginDataToken(html);
+            string data = "__RequestVerificationToken="+token+"&Email=dangnt520%40wru.vn&Password=nguyenthedang1109&RememberMe=true&RememberMe=false";
+            html = http.Post(urlLogin, data, "application/json; charset=utf-8" ).ToString();
+
+            File.WriteAllText("res.html", html);
+            Process.Start("res.html");
+            
         }
     }
 
