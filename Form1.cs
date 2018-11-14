@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,7 @@ namespace HTTP_Request_GetHowKteam
         {
             InitializeComponent();
         }
-
+        //Just Request
         private void btnGetData_Click(object sender, EventArgs e)
         {
 
@@ -41,7 +42,7 @@ namespace HTTP_Request_GetHowKteam
             File.WriteAllText("res.html", html);
             Process.Start("res.html");
         }
-        string getData(string url,HttpRequest http =null,string userArgent=null,string cookie=null)
+        string getData(string url, HttpRequest http = null, string userArgent = null, string cookie = null)
         {
             if (http == null)
             {
@@ -59,10 +60,11 @@ namespace HTTP_Request_GetHowKteam
             string html = http.Get(url).ToString();
             return html;
         }
-        void AddCookie(HttpRequest http,string cookie)
+
+        void AddCookie(HttpRequest http, string cookie)
         {
             var temp = cookie.Split(';');
-            foreach(var item in temp)
+            foreach (var item in temp)
             {
                 var temp2 = item.Split('=');
                 if (temp2.Count() > 1)
@@ -80,18 +82,17 @@ namespace HTTP_Request_GetHowKteam
             var html = getData(url);
             testData(html);
         }
-        //
         string GetLoginDataToken(string html)
         {
             string token = "";
-            var res = Regex.Matches(html, @"(?<=__RequestVerificationToken"" type=""hidden"" value="").*?(?="")",RegexOptions.Singleline);
-            if(res!=null && res.Count > 0)
+            var res = Regex.Matches(html, @"(?<=__RequestVerificationToken"" type=""hidden"" value="").*?(?="")", RegexOptions.Singleline);
+            if (res != null && res.Count > 0)
             {
                 token = res[0].ToString();
             }
             return token;
         }
-        string PostData(HttpRequest http,string url,string data=null,string contentType=null,string userArgent =null,string cookie = null)
+        string PostData(HttpRequest http, string url, string data = null, string contentType = null, string userArgent = null, string cookie = null)
         {
             if (http == null)
             {
@@ -113,18 +114,90 @@ namespace HTTP_Request_GetHowKteam
         {
             HttpRequest http = new HttpRequest();
             http.Cookies = new CookieDictionary();
-            string userArgent="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
+            string userArgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
 
             var html = getData(url, http, userArgent);
 
             string token = GetLoginDataToken(html);
-            string data = "__RequestVerificationToken="+token+"&Email=dangnt520%40wru.vn&Password=nguyenthedang1109&RememberMe=true&RememberMe=false";
-            html = http.Post(urlLogin, data, "application/json; charset=utf-8" ).ToString();
+            string data = "__RequestVerificationToken=" + token + "&Email=dangnt520%40wru.vn&Password=nguyenthedang1109&RememberMe=true&RememberMe=false";
+            html = http.Post(urlLogin, data, "application/json; charset=utf-8").ToString();
 
             File.WriteAllText("res.html", html);
             Process.Start("res.html");
-            
+
+        }
+        /// <summary>
+        /// Upload file:http://www.uploadfiles.io
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUploadFile_Click(object sender, EventArgs e)
+        {
+            UploadFile();
+        }
+        string UploadData(HttpRequest http, string url, MultipartContent data = null, string contentType = null, string userArgent = null, string cookie = null)
+        {
+            if (http == null)
+            {
+                http = new HttpRequest();
+                http.Cookies = new CookieDictionary();
+            }
+            if (!string.IsNullOrEmpty(cookie))
+            {
+                AddCookie(http, cookie);
+            }
+            if (!string.IsNullOrEmpty(userArgent))
+            {
+                http.UserAgent = userArgent;
+            }
+            string html = http.Post(url, data).ToString();
+            return html;
+        }
+        void UploadFile(string filepath)
+        {
+            MultipartContent data = new MultipartContent() {
+                {new StringContent("dzuuid"),"1ac01ba0-c711-44e9-92b1-4b1208e9a02f" },
+                {new StringContent("dzchunkindex"),"0" },
+                {new StringContent("dztotalfilesize"),"131190" },
+                {new StringContent("dzchunksize"),"26143000" },
+                {new StringContent("dztotalchunkcount"),"1" },
+                {new StringContent("dzchunkbyteoffset"),"0" },
+                {new FileContent(filepath),"file",Path.GetFileName(filepath)}
+            };
+            var html = UploadData(null, "https://up.uploadfiles.io/upload", data);
+
+
+            var dataRes = JsonConvert.DeserializeObject<UploadFileModel>(html);
+
+            Process.Start(dataRes.destination);
+        }
+        void UploadFile()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            var dialogResult = dialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                UploadFile(dialog.FileName);
+            }
         }
     }
+
+    public class UploadFileModel
+    {
+        public bool status { get; set; }
+        public int id { get; set; }
+        public string url { get; set; }
+        public string destination { get; set; }
+        public string name { get; set; }
+        public string filename { get; set; }
+        public string slug { get; set; }
+        public string size { get; set; }
+        public string type { get; set; }
+        public string expiry { get; set; }
+        public string session_id { get; set; }
+        public string timing { get; set; }
+    }
+
 
 }

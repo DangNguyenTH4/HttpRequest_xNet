@@ -10,3 +10,5 @@ D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HT
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.csproj.CopyComplete
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.exe
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.pdb
+D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\Newtonsoft.Json.dll
+D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\Newtonsoft.Json.xml

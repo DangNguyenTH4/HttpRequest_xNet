@@ -31,6 +31,7 @@
             this.btnGetData = new System.Windows.Forms.Button();
             this.btnGetDataCookie = new System.Windows.Forms.Button();
             this.btnPostLogin = new System.Windows.Forms.Button();
+            this.btnUploadFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetData
@@ -63,11 +64,22 @@
             this.btnPostLogin.UseVisualStyleBackColor = true;
             this.btnPostLogin.Click += new System.EventHandler(this.btnPostLogin_Click);
             // 
+            // btnUploadFile
+            // 
+            this.btnUploadFile.Location = new System.Drawing.Point(311, 12);
+            this.btnUploadFile.Name = "btnUploadFile";
+            this.btnUploadFile.Size = new System.Drawing.Size(75, 23);
+            this.btnUploadFile.TabIndex = 3;
+            this.btnUploadFile.Text = "Upload File";
+            this.btnUploadFile.UseVisualStyleBackColor = true;
+            this.btnUploadFile.Click += new System.EventHandler(this.btnUploadFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUploadFile);
             this.Controls.Add(this.btnPostLogin);
             this.Controls.Add(this.btnGetDataCookie);
             this.Controls.Add(this.btnGetData);
@@ -82,6 +94,7 @@
         private System.Windows.Forms.Button btnGetData;
         private System.Windows.Forms.Button btnGetDataCookie;
         private System.Windows.Forms.Button btnPostLogin;
+        private System.Windows.Forms.Button btnUploadFile;
     }
 }
 
