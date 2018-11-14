@@ -7,8 +7,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xNet;
@@ -88,7 +90,7 @@ namespace HTTP_Request_GetHowKteam
             var res = Regex.Matches(html, @"(?<=__RequestVerificationToken"" type=""hidden"" value="").*?(?="")", RegexOptions.Singleline);
             if (res != null && res.Count > 0)
             {
-                token = res[0].ToString();
+                token = res[1].ToString();
             }
             return token;
         }
@@ -119,13 +121,17 @@ namespace HTTP_Request_GetHowKteam
             var html = getData(url, http, userArgent);
 
             string token = GetLoginDataToken(html);
-            string data = "__RequestVerificationToken=" + token + "&Email=dangnt520%40wru.vn&Password=nguyenthedang1109&RememberMe=true&RememberMe=false";
+            string userName = "dangnt520@wru.vn";
+            string passWord = "nguyenthedang1109";
+            string data = "__RequestVerificationToken=" + token + "&Email=" + WebUtility.UrlEncode(userName) + "&Password=" + WebUtility.UrlEncode(passWord) + "&RememberMe=true&RememberMe=false";
             html = http.Post(urlLogin, data, "application/json; charset=utf-8").ToString();
 
             File.WriteAllText("res.html", html);
             Process.Start("res.html");
 
         }
+
+
         /// <summary>
         /// Upload file:http://www.uploadfiles.io
         /// 
@@ -181,6 +187,72 @@ namespace HTTP_Request_GetHowKteam
                 UploadFile(dialog.FileName);
             }
         }
+
+
+        /// <summary>
+        /// 
+        /// 
+        /// CapchaNormal
+        /// 
+        /// 
+        /// </summary>
+        private string capchaKey = "*************************";
+        private string urlRequestVtcCapchaImg = "https://vtcgame.vn//CaptchaImage.ashx?ss=0.014018362059772027&w=60&h=40";
+        private string urlRequestTopupByCard = "https://vtcgame.vn/Vcoin/TopupByCard";
+        private string urlVtcCoint = "https://vtcgame.vn/nap-vcoin/qua-the-cao.html";
+        private void btnCapcha_Click(object sender, EventArgs e)
+        {
+            HttpRequest http = new HttpRequest();
+            http.Cookies = new CookieDictionary();
+            string userArgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
+
+            var html = getData(urlVtcCoint, http, userArgent);
+
+            string token = GetVtcToken(html);
+
+            //File.WriteAllBytes("Capcha.jpg",http.Get(urlRequestVtcCapchaImg).ToMemoryStream().ToArray());
+            var binImg = http.Get(urlRequestVtcCapchaImg).ToMemoryStream().ToArray();
+            File.WriteAllBytes("Capcha.jpg", binImg);
+
+            string userName = "rongk9";
+            string serial = "123";
+            string code = "123123";
+            string capcha = ResloveNormalCapcha(capchaKey, Convert.ToBase64String(binImg));
+
+            string data = "__RequestVerificationToken=" + token + "&typeCard=VC&seriCard=" + serial + "&codeCard=" + code + "&userNameReceive=" + userName + "&captcha=" + capcha + "&captchaVerify=";
+            html = PostData(http, urlRequestTopupByCard, data, "application/x-www-form-urlencoded; charset=utf-8").ToString();
+
+            VtcChargeResponseModel resData = JsonConvert.DeserializeObject<VtcChargeResponseModel>(html);
+            MessageBox.Show(resData.ErorrMess);
+        }
+        string GetVtcToken(string html)
+        {
+            string token = "";
+            var res = Regex.Matches(html, @"(?<=__RequestVerificationToken"" type=""hidden"" value="").*?(?="")", RegexOptions.Singleline);
+            if (res != null && res.Count > 0)
+            {
+                token = res[0].ToString();
+            }
+            return token;
+        }
+        string ResloveNormalCapcha(string capChaKey,string imgBase64)
+        {
+            string cap = "";
+
+            Recaptcha_2Captcha reCap = new Recaptcha_2Captcha(capchaKey);
+            bool isSuccess = reCap.SolveNormalCapcha(imgBase64, out cap);
+            while (!isSuccess)
+            {
+                isSuccess = reCap.SolveNormalCapcha(imgBase64, out cap);
+                Thread.Sleep(TimeSpan.FromSeconds(2));
+            }
+            return cap;
+        }
+
+        private void btnRecaptcha_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class UploadFileModel
@@ -199,5 +271,11 @@ namespace HTTP_Request_GetHowKteam
         public string timing { get; set; }
     }
 
+
+    public class VtcChargeResponseModel
+    {
+        public int ResponseStatus { get; set; }
+        public string ErorrMess { get; set; }
+    }
 
 }

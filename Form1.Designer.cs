@@ -32,6 +32,8 @@
             this.btnGetDataCookie = new System.Windows.Forms.Button();
             this.btnPostLogin = new System.Windows.Forms.Button();
             this.btnUploadFile = new System.Windows.Forms.Button();
+            this.btnCapcha = new System.Windows.Forms.Button();
+            this.btnRecaptcha = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetData
@@ -74,11 +76,33 @@
             this.btnUploadFile.UseVisualStyleBackColor = true;
             this.btnUploadFile.Click += new System.EventHandler(this.btnUploadFile_Click);
             // 
+            // btnCapcha
+            // 
+            this.btnCapcha.Location = new System.Drawing.Point(393, 11);
+            this.btnCapcha.Name = "btnCapcha";
+            this.btnCapcha.Size = new System.Drawing.Size(116, 23);
+            this.btnCapcha.TabIndex = 4;
+            this.btnCapcha.Text = "Normal Capcha Vtc";
+            this.btnCapcha.UseVisualStyleBackColor = true;
+            this.btnCapcha.Click += new System.EventHandler(this.btnCapcha_Click);
+            // 
+            // btnRecaptcha
+            // 
+            this.btnRecaptcha.Location = new System.Drawing.Point(516, 11);
+            this.btnRecaptcha.Name = "btnRecaptcha";
+            this.btnRecaptcha.Size = new System.Drawing.Size(154, 23);
+            this.btnRecaptcha.TabIndex = 5;
+            this.btnRecaptcha.Text = "Recaptchar-ThayTrucTuyen";
+            this.btnRecaptcha.UseVisualStyleBackColor = true;
+            this.btnRecaptcha.Click += new System.EventHandler(this.btnRecaptcha_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRecaptcha);
+            this.Controls.Add(this.btnCapcha);
             this.Controls.Add(this.btnUploadFile);
             this.Controls.Add(this.btnPostLogin);
             this.Controls.Add(this.btnGetDataCookie);
@@ -95,6 +119,8 @@
         private System.Windows.Forms.Button btnGetDataCookie;
         private System.Windows.Forms.Button btnPostLogin;
         private System.Windows.Forms.Button btnUploadFile;
+        private System.Windows.Forms.Button btnCapcha;
+        private System.Windows.Forms.Button btnRecaptcha;
     }
 }
 
