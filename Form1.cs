@@ -17,13 +17,22 @@ using xNet;
 
 namespace HTTP_Request_GetHowKteam
 {
-    public partial class Form1 : Form
+    public partial class btnVerifyEmail : Form
     {
-        public Form1()
+        public btnVerifyEmail()
         {
             InitializeComponent();
         }
-        //Just Request
+        /// <summary>
+        /// 
+        ///  //Just Request
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+
+        //Get
         private void btnGetData_Click(object sender, EventArgs e)
         {
 
@@ -75,6 +84,8 @@ namespace HTTP_Request_GetHowKteam
                 }
             }
         }
+
+        //Post
         string url = "https://www.howkteam.vn/";
         string urlLogin = "https://www.howkteam.vn/account/login?returnUrl=https%3A%2F%2Fwww.howkteam.vn%2F";
         private void btnGetDataCookie_Click(object sender, EventArgs e)
@@ -138,6 +149,7 @@ namespace HTTP_Request_GetHowKteam
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #region upload file
         private void btnUploadFile_Click(object sender, EventArgs e)
         {
             UploadFile();
@@ -187,7 +199,7 @@ namespace HTTP_Request_GetHowKteam
                 UploadFile(dialog.FileName);
             }
         }
-
+        #endregion
 
         /// <summary>
         /// 
@@ -196,6 +208,7 @@ namespace HTTP_Request_GetHowKteam
         /// 
         /// 
         /// </summary>
+        #region Normal Captcha
         private string capchaKey = "138eb6618863fbd025416e85dc7a59a7";
         private string urlRequestVtcCapchaImg = "https://vtcgame.vn//CaptchaImage.ashx?ss=0.014018362059772027&w=60&h=40";
         private string urlRequestTopupByCard = "https://vtcgame.vn/Vcoin/TopupByCard";
@@ -248,6 +261,7 @@ namespace HTTP_Request_GetHowKteam
             }
             return cap;
         }
+        #endregion
         /// <summary>
         /// 
         /// Recaptcha
@@ -255,6 +269,7 @@ namespace HTTP_Request_GetHowKteam
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #region Recaptcha
         private string ggKeyThayTrucTuyen = "6Lf57BcUAAAAABST6IWjYd97ghC3v2kKsCfPNrdg";
         private string urlThayTrucTuyenLogin = "http://thaytructuyen.com/Account/Login";
         private string urlRecapChaSource = "http://thaytructuyen.com/Account/Login";
@@ -301,6 +316,12 @@ namespace HTTP_Request_GetHowKteam
                 token = res[0].ToString();
             }
             return token;
+        }
+        #endregion
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Mail.Verify(txtName.Text, txtPass.Text, "smtp.gmail.com",587);
+            Mail.Verify("nguyen.dang.tlu@gmail.com", "13121997", "smtp.gmail.com",587);
         }
     }
 

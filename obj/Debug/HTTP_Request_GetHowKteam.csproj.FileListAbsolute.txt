@@ -3,7 +3,6 @@ D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\HT
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\HTTP_Request_GetHowKteam.pdb
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\xNet.dll
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.csprojAssemblyReference.cache
-D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.Form1.resources
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.Properties.Resources.resources
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.csproj.GenerateResource.cache
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.csproj.CoreCompileInputs.cache
@@ -12,3 +11,6 @@ D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HT
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.pdb
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\Newtonsoft.Json.dll
 D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\Newtonsoft.Json.xml
+D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\obj\Debug\HTTP_Request_GetHowKteam.btnVerifyEmail.resources
+D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\AE.Net.Mail.dll
+D:\VisualStudioCS\HTTP_Request_GetHowKteam\HTTP_Request_GetHowKteam\bin\Debug\AE.Net.Mail.pdb

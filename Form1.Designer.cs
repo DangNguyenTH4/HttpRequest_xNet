@@ -1,6 +1,6 @@
 ﻿namespace HTTP_Request_GetHowKteam
 {
-    partial class Form1
+    partial class btnVerifyEmail
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,9 @@
             this.btnUploadFile = new System.Windows.Forms.Button();
             this.btnCapcha = new System.Windows.Forms.Button();
             this.btnRecaptcha = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGetData
@@ -96,20 +99,50 @@
             this.btnRecaptcha.UseVisualStyleBackColor = true;
             this.btnRecaptcha.Click += new System.EventHandler(this.btnRecaptcha_Click);
             // 
-            // Form1
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 104);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Verify Email";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(93, 107);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(160, 20);
+            this.txtName.TabIndex = 7;
+            this.txtName.Text = "nguyen.dang.tlu@gmail.com";
+            // 
+            // txtPass
+            // 
+            this.txtPass.Location = new System.Drawing.Point(286, 107);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(100, 20);
+            this.txtPass.TabIndex = 7;
+            // 
+            // btnVerifyEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRecaptcha);
             this.Controls.Add(this.btnCapcha);
             this.Controls.Add(this.btnUploadFile);
             this.Controls.Add(this.btnPostLogin);
             this.Controls.Add(this.btnGetDataCookie);
             this.Controls.Add(this.btnGetData);
-            this.Name = "Form1";
+            this.Name = "btnVerifyEmail";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -121,6 +154,9 @@
         private System.Windows.Forms.Button btnUploadFile;
         private System.Windows.Forms.Button btnCapcha;
         private System.Windows.Forms.Button btnRecaptcha;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPass;
     }
 }
 
