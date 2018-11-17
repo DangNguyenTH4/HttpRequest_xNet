@@ -16,7 +16,7 @@ namespace HTTP_Request_GetHowKteam
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new btnVerifyEmail());
+            Application.Run(new Form1());
         }
     }
 }

@@ -17,9 +17,9 @@ using xNet;
 
 namespace HTTP_Request_GetHowKteam
 {
-    public partial class btnVerifyEmail : Form
+    public partial class Form1 : Form
     {
-        public btnVerifyEmail()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -322,6 +322,55 @@ namespace HTTP_Request_GetHowKteam
         {
             //Mail.Verify(txtName.Text, txtPass.Text, "smtp.gmail.com",587);
             Mail.Verify("nguyen.dang.tlu@gmail.com", "13121997", "smtp.gmail.com",587);
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            HttpRequest http = new HttpRequest();
+            http.ConnectTimeout = 9999999;
+            http.KeepAliveTimeout = 9999999;
+            http.ReadWriteTimeout = 99999999;
+            string urlDownload = "https://dantricdn.com/thumb_w/640/2017/photo-2-1507597840793.jpg";
+            string filename = "cap.jpg";
+            var bin = http.Get(urlDownload).ToMemoryStream().ToArray();
+            File.WriteAllBytes(filename, bin);
+            Process.Start(filename);
+
+        }
+
+        private void btnFakeIp_Click(object sender, EventArgs e)
+        {
+            HttpRequest http = new HttpRequest();
+            string ip = "181.225.109.194:80";
+            //http.Password = "";
+            //http.Username = "";
+            http.Proxy = HttpProxyClient.Parse(ip);
+
+            //Socks4aProxyClient;
+            //Socks5ProxyClient;
+            var html = getData("https://whoer.net/", http);
+            testData(html);
+        }
+
+
+        private void GetDataMultiThreading(int z)
+        { 
+            var html = getData("https://www.howkteam.vn/");
+            File.WriteAllText("res" + z + ".html", html);
+            Process.Start("res" + z + ".html");
+            Thread.Sleep(1000);
+        }
+        private void btnMultiThreading_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                int j = i;
+                //Thread t = new Thread(() =>{GetDataMultiThreading(j);});
+                //t.Start();
+                Task p = new Task(() => { GetDataMultiThreading(j); });
+                p.Start();
+
+            }
         }
     }
 

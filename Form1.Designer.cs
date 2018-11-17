@@ -1,6 +1,6 @@
 ﻿namespace HTTP_Request_GetHowKteam
 {
-    partial class btnVerifyEmail
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -34,9 +34,12 @@
             this.btnUploadFile = new System.Windows.Forms.Button();
             this.btnCapcha = new System.Windows.Forms.Button();
             this.btnRecaptcha = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVerifyEmail = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
+            this.btnDownload = new System.Windows.Forms.Button();
+            this.btnFakeIp = new System.Windows.Forms.Button();
+            this.btnMultiThreading = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetData
@@ -81,7 +84,7 @@
             // 
             // btnCapcha
             // 
-            this.btnCapcha.Location = new System.Drawing.Point(393, 11);
+            this.btnCapcha.Location = new System.Drawing.Point(12, 41);
             this.btnCapcha.Name = "btnCapcha";
             this.btnCapcha.Size = new System.Drawing.Size(116, 23);
             this.btnCapcha.TabIndex = 4;
@@ -91,7 +94,7 @@
             // 
             // btnRecaptcha
             // 
-            this.btnRecaptcha.Location = new System.Drawing.Point(516, 11);
+            this.btnRecaptcha.Location = new System.Drawing.Point(134, 41);
             this.btnRecaptcha.Name = "btnRecaptcha";
             this.btnRecaptcha.Size = new System.Drawing.Size(154, 23);
             this.btnRecaptcha.TabIndex = 5;
@@ -99,19 +102,19 @@
             this.btnRecaptcha.UseVisualStyleBackColor = true;
             this.btnRecaptcha.Click += new System.EventHandler(this.btnRecaptcha_Click);
             // 
-            // button1
+            // btnVerifyEmail
             // 
-            this.button1.Location = new System.Drawing.Point(12, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Verify Email";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnVerifyEmail.Location = new System.Drawing.Point(12, 70);
+            this.btnVerifyEmail.Name = "btnVerifyEmail";
+            this.btnVerifyEmail.Size = new System.Drawing.Size(75, 23);
+            this.btnVerifyEmail.TabIndex = 6;
+            this.btnVerifyEmail.Text = "Verify Email";
+            this.btnVerifyEmail.UseVisualStyleBackColor = true;
+            this.btnVerifyEmail.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(93, 107);
+            this.txtName.Location = new System.Drawing.Point(93, 73);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(160, 20);
             this.txtName.TabIndex = 7;
@@ -119,27 +122,60 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(286, 107);
+            this.txtPass.Location = new System.Drawing.Point(286, 73);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(100, 20);
             this.txtPass.TabIndex = 7;
             // 
-            // btnVerifyEmail
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(12, 99);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(75, 23);
+            this.btnDownload.TabIndex = 8;
+            this.btnDownload.Text = "Download";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
+            // btnFakeIp
+            // 
+            this.btnFakeIp.Location = new System.Drawing.Point(94, 98);
+            this.btnFakeIp.Name = "btnFakeIp";
+            this.btnFakeIp.Size = new System.Drawing.Size(75, 23);
+            this.btnFakeIp.TabIndex = 9;
+            this.btnFakeIp.Text = "Fake Ip";
+            this.btnFakeIp.UseVisualStyleBackColor = true;
+            this.btnFakeIp.Click += new System.EventHandler(this.btnFakeIp_Click);
+            // 
+            // btnMultiThreading
+            // 
+            this.btnMultiThreading.Location = new System.Drawing.Point(12, 129);
+            this.btnMultiThreading.Name = "btnMultiThreading";
+            this.btnMultiThreading.Size = new System.Drawing.Size(157, 23);
+            this.btnMultiThreading.TabIndex = 10;
+            this.btnMultiThreading.Text = "MultiThreadingHttp";
+            this.btnMultiThreading.UseVisualStyleBackColor = true;
+            this.btnMultiThreading.Click += new System.EventHandler(this.btnMultiThreading_Click);
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(433, 264);
+            this.Controls.Add(this.btnMultiThreading);
+            this.Controls.Add(this.btnFakeIp);
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnVerifyEmail);
             this.Controls.Add(this.btnRecaptcha);
             this.Controls.Add(this.btnCapcha);
             this.Controls.Add(this.btnUploadFile);
             this.Controls.Add(this.btnPostLogin);
             this.Controls.Add(this.btnGetDataCookie);
             this.Controls.Add(this.btnGetData);
-            this.Name = "btnVerifyEmail";
+            this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,9 +190,12 @@
         private System.Windows.Forms.Button btnUploadFile;
         private System.Windows.Forms.Button btnCapcha;
         private System.Windows.Forms.Button btnRecaptcha;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVerifyEmail;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.Button btnFakeIp;
+        private System.Windows.Forms.Button btnMultiThreading;
     }
 }
 
